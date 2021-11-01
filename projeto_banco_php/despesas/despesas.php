@@ -36,7 +36,8 @@
 
          <td> 
              <a href="despesas_excluir.php?id= <?php echo  $registro->codigo_despesa; ?>"><i class="bi bi-trash-fill" style="color: red"></i>
-             <a class="ps-2" href=""><i class="bi bi-pencil-square" style="color: blue"></i>
+             <a class="ps-2" href="despesas_editar.php?opcao=editar&id=<?php echo  $registro->codigo_despesa; ?>">
+             <i class="bi bi-pencil-square" style="color: blue"></i>
          </td>
      <?php
          echo '</tr>';   
@@ -46,5 +47,8 @@
 
 </table>
 <br>
-
+<div class=" text-center">
+        <a href="despesas_editar.php?opcao=incluir" class="btn btn-success"> Incluir </a>
+    </div>
+<br>
 <a href="../fornecedores/fornecedores.php" class="btn btn-primary"> Voltar </a>

@@ -32,14 +32,13 @@
             <td>' . $registro->placa_veiculo.'</td>
             <td>' . $registro->modelo_veiculo.'</td>'
             
-
-       
-
          ?>
 
          <td> 
-             <a href="veiculos_excluir.php?id=<?php echo  $registro->codigo_veiculo; ?>"><i class="bi bi-trash-fill" style="color: red"></i>
-             <a class="ps-2" href=""><i class="bi bi-pencil-square" style="color: blue"></i>
+             <a href="veiculos_excluir.php?id=<?php echo  $registro->codigo_veiculo; ?>">
+             <i class="bi bi-trash-fill" style="color: red"></i>
+             <a class="ps-2" href="veiculos_editar.php?opcao=editar&id=<?php echo  $registro->codigo_veiculo; ?>">
+            <i class="bi bi-pencil-square" style="color: blue"></i>
          </td>
         <?php
          echo '</tr>';
@@ -48,6 +47,9 @@
 </tbody>
 
 </table>
+<div class=" text-center">
+        <a href="veiculos_editar.php?opcao=incluir" class="btn btn-success"> Incluir </a>
+    </div>
 <br>
 
 <a href="../fornecedores/fornecedores.php" class="btn btn-primary"> Voltar </a>

@@ -43,8 +43,10 @@ include '../conecta/conecta.php';
             ?>
 
                 <td> 
-                    <a href="fornecedores_excluir.php?id=<?php echo  $registro->codigo_fornecedor; ?>"><i class="bi bi-trash-fill" style="color: red"></i>
-                    <a class="ps-2" href="fornecedores_editar.php?opcao=editar"><i class="bi bi-pencil-square" style="color: blue"></i>
+                    <a href="fornecedores_excluir.php?id=<?php echo  $registro->codigo_fornecedor; ?>">
+                    <i class="bi bi-trash-fill" style="color: red"></i>
+                    <a class="ps-2" href="fornecedores_editar.php?opcao=editar&id=<?php echo  $registro->codigo_fornecedor; ?>">
+                    <i class="bi bi-pencil-square" style="color: blue"></i>
                 </td>
             <?php
                 echo '</tr>';   
