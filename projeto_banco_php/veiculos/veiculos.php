@@ -1,5 +1,17 @@
 <?php 
-    include '../conecta/conecta.php';        
+    include '../conecta/conecta.php';      
+    
+    
+$placa = null ;
+$modelo= null;
+
+if(isset($_POST['placa'])){
+    $placa = $_POST['placa'];
+}
+
+if(isset($_POST['modelo'])){
+    $modelo = $_POST['modelo'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -9,10 +21,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fornecedores</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+    <?php include '../estilos.html'?>
 </head>
+
+<body class="container-fluid" > 
 <h1>Cadastro de Veículos</h1>
+
+<form method="POST">
+    
+    <table>
+    <tr>
+        <td>Placa:</td>
+        <td><input type='text' name='placa'/></td>
+    </tr>
+    <tr>
+        <td>Modelo: </td>
+        <td><input type='text' name='modelo'/></td>
+    </tr>
+    <tr>
+        <td><input class="btn btn-primary" type='submit' name='pesquisar'/></td>
+        <td></td>
+    </tr>
+    </table>
+
+    </form>
+
+
 <table style="border:10px;" class="table table-striped">
 <thead class="table-dark">
     <tr>
@@ -24,7 +58,7 @@
  </thead>
 <tbody>
 
-<?php $consulta = $con->query("select * from veiculos v inner join modelo m on (m.codigo_modelo = v.codigo_modelo)");
+<?php $consulta = $con->query("select * from veiculos v inner join modelo m on (m.codigo_modelo = v.codigo_modelo) where modelo_veiculo like '%$modelo% and placa_veiculo like '%$placa%'");
          while ($registro = $consulta->fetch(PDO::FETCH_OBJ)){
          echo
          '<tr>
@@ -53,3 +87,7 @@
 <br>
 
 <a href="../fornecedores/fornecedores.php" class="btn btn-primary"> Voltar </a>
+
+</body>
+
+</html>
