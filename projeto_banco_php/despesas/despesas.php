@@ -1,6 +1,20 @@
 <?php 
-    include '../conecta/conecta.php';        
+    include '../conecta/conecta.php';
+    include '../funcoes.php';    
+    
+    
+    $grupo_despesa_pesquisa = null ;
+    $descricao_pesquisa = null;
+
+    if(isset($_POST['grupo_despesa_pesquisa'])){
+        $grupo_despesa_pesquisa = $_POST['grupo_despesa_pesquisa'];
+    }
+    
+    if(isset($_POST['descricao_pesquisa'])){
+        $descricao_pesquisa = $_POST['descricao_pesquisa'];
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +28,27 @@
 
 <body class="container-fluid" ></body>
 <h1>Cadastro de Despesas</h1>
+
+<form method="POST">
+    
+    <table>
+    <tr>
+        <td>Grupo despesa:</td>
+        <td><input type='text' name='grupo_despesa_pesquisa'/></td>
+    </tr>
+    <tr>
+        <td>Descrição Despesa: </td>
+        <td><input type='text' name='descricao_pesquisa'/></td>
+    </tr>
+    <tr>
+        <td><input class="btn btn-primary" type='submit' name='pesquisar'/></td>
+        <td></td>
+    </tr>
+    </table>
+
+    </form>
+
+
 <table style="border:10px;" class="table table-striped">
 <thead class="table-dark">
     <tr>
@@ -25,7 +60,8 @@
  </thead>
 <tbody>
 
-<?php $consulta = $con->query("select * from despesas d inner join grupo_despesa g on (d.codigo_grupo_despesa = g.codigo_grupo_despesa)");
+<?php $consulta = $con->query("select * from despesas d inner join grupo_despesa g on (d.codigo_grupo_despesa = g.codigo_grupo_despesa)" .
+" where descricao_despesa like '%$descricao_pesquisa%' and nome_grupo_despesa like '%$grupo_despesa_pesquisa%'");
          while ($registro = $consulta->fetch(PDO::FETCH_OBJ)){
          echo
          '<tr>

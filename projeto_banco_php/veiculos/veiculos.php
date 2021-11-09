@@ -58,7 +58,7 @@ if(isset($_POST['modelo'])){
  </thead>
 <tbody>
 
-<?php $consulta = $con->query("select * from veiculos v inner join modelo m on (m.codigo_modelo = v.codigo_modelo) where modelo_veiculo like '%$modelo% and placa_veiculo like '%$placa%'");
+<?php $consulta = $con->query("select * from veiculos v inner join modelo m on (m.codigo_modelo = v.codigo_modelo) where modelo_veiculo like '%$modelo%' and placa_veiculo like '%$placa%'");
          while ($registro = $consulta->fetch(PDO::FETCH_OBJ)){
          echo
          '<tr>
